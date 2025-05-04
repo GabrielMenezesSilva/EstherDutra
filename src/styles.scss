@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+
+:root {
+  --color-primary: #ffffff;
+  --color-secondary: #e8e8e8;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.section-light {
+  background-color: var(--color-primary);
+  padding: 60px 0;
+}
+
+.section-dark {
+  background-color: var(--color-secondary);
+  padding: 60px 0;
+}

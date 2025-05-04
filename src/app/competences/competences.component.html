@@ -1,0 +1,81 @@
+<section class="competences-section">
+  <div class="competences-container">
+    <h2 class="section-title">
+      <i class="fa-solid fa-star"></i>
+      Compétences
+    </h2>
+
+    <div class="tabs-container">
+      <div class="tabs-header">
+        <button
+          class="tab-button"
+          [class.active]="activeTab === 'technical'"
+          (click)="setActiveTab('technical')"
+        >
+          <i class="fa-solid fa-code"></i>
+          Techniques
+        </button>
+        <button
+          class="tab-button"
+          [class.active]="activeTab === 'soft'"
+          (click)="setActiveTab('soft')"
+        >
+          <i class="fa-solid fa-heart"></i>
+          Soft Skills
+        </button>
+        <button
+          class="tab-button"
+          [class.active]="activeTab === 'languages'"
+          (click)="setActiveTab('languages')"
+        >
+          <i class="fa-solid fa-language"></i>
+          Langues
+        </button>
+      </div>
+
+      <div class="tabs-content">
+        <div class="tab-panel" [class.active]="activeTab === 'technical'">
+          <div class="competence-cards">
+            <div class="competence-card" *ngFor="let skill of technicalSkills">
+              <i [class]="skill.icon + ' card-icon'"></i>
+              <h3 class="card-title">{{ skill.name }}</h3>
+              <div class="skill-level">
+                <div class="skill-bar" [style.width.%]="skill.level"></div>
+                <span class="skill-percentage">{{ skill.level }}%</span>
+              </div>
+              <p class="card-description">{{ skill.description }}</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-panel" [class.active]="activeTab === 'soft'">
+          <div class="competence-cards">
+            <div class="competence-card" *ngFor="let skill of softSkills">
+              <i [class]="skill.icon + ' card-icon'"></i>
+              <h3 class="card-title">{{ skill.name }}</h3>
+              <div class="skill-level">
+                <div class="skill-bar" [style.width.%]="skill.level"></div>
+                <span class="skill-percentage">{{ skill.level }}%</span>
+              </div>
+              <p class="card-description">{{ skill.description }}</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-panel" [class.active]="activeTab === 'languages'">
+          <div class="competence-cards">
+            <div class="competence-card" *ngFor="let skill of languages">
+              <i [class]="skill.icon + ' card-icon'"></i>
+              <h3 class="card-title">{{ skill.name }}</h3>
+              <div class="skill-level">
+                <div class="skill-bar" [style.width.%]="skill.level"></div>
+                <span class="skill-percentage">{{ skill.level }}%</span>
+              </div>
+              <p class="card-description">{{ skill.description }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
