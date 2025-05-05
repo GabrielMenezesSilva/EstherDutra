@@ -56,15 +56,20 @@
 }
 
 .contact-form {
-  flex: 0 1 600px;
+  flex: 0 1 500px;
   background: #fff;
   padding: 32px;
   border-radius: 16px;
   box-shadow: 0 4px 20px rgba(160, 108, 71, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .form-group {
   margin-bottom: 24px;
+  max-width: 400px;
+  width: 100%;
 
   label {
     display: block;
@@ -81,6 +86,7 @@
 
 .input-wrapper {
   position: relative;
+  width: 100%;
 
   input,
   textarea {
@@ -105,17 +111,10 @@
   }
 
   textarea {
-    min-height: 120px;
+    min-height: 100px;
+    max-height: 200px;
     resize: vertical;
-  }
-
-  .input-icon {
-    position: absolute;
-    right: 16px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #bfa382;
-    pointer-events: none;
+    line-height: 1.5;
   }
 }
 
@@ -136,7 +135,7 @@
   width: auto;
   min-width: 200px;
   max-width: 100%;
-  margin: 0 auto;
+  margin-top: 16px;
 
   i {
     font-size: 1.2em;
