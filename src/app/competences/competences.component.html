@@ -34,7 +34,7 @@
       </div>
 
       <div class="tabs-content">
-        <div class="tab-panel" [class.active]="activeTab === 'technical'">
+        <div class="tab-pane" [class.active]="activeTab === 'technical'">
           <div class="competence-cards">
             <div class="competence-card" *ngFor="let skill of technicalSkills">
               <i [class]="skill.icon + ' card-icon'"></i>
@@ -48,7 +48,7 @@
           </div>
         </div>
 
-        <div class="tab-panel" [class.active]="activeTab === 'soft'">
+        <div class="tab-pane" [class.active]="activeTab === 'soft'">
           <div class="competence-cards">
             <div class="competence-card" *ngFor="let skill of softSkills">
               <i [class]="skill.icon + ' card-icon'"></i>
@@ -62,7 +62,7 @@
           </div>
         </div>
 
-        <div class="tab-panel" [class.active]="activeTab === 'languages'">
+        <div class="tab-pane" [class.active]="activeTab === 'languages'">
           <div class="competence-cards">
             <div class="competence-card" *ngFor="let skill of languages">
               <i [class]="skill.icon + ' card-icon'"></i>

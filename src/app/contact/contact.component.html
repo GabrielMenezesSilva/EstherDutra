@@ -1,92 +1,77 @@
 <section class="contact-section">
   <h2 class="contact-title">
-    <i class="fas fa-envelope-open-text"></i>
-    Contato
+    <i class="fas fa-envelope"></i>
+    Contactez-moi
   </h2>
   <div class="contact-container">
-    <div class="contact-info">
-      <ul class="contact-list">
-        <li>
-          <i class="fab fa-linkedin fa-lg"></i>
-          <a
-            href="https://www.linkedin.com/in/esther-dutra"
-            target="_blank"
-            rel="noopener noreferrer"
-            >LinkedIn</a
-          >
-        </li>
-        <li>
-          <i class="fas fa-map-marker-alt fa-lg"></i>
-          <span>São Paulo, Brasil</span>
-        </li>
-      </ul>
-    </div>
     <div class="contact-form">
-      <form (ngSubmit)="onSubmit()" #contactForm="ngForm">
+      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
-          <label for="name">
+          <label>
             <i class="fas fa-user"></i>
-            Nome
+            Nom
           </label>
           <div class="input-wrapper">
+            <input type="text" formControlName="name" placeholder="Votre nom" />
             <i class="fas fa-user input-icon"></i>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              [(ngModel)]="formData.name"
-              required
-              #name="ngModel"
-              [class.is-invalid]="name.invalid && name.touched"
-              placeholder="Seu nome completo"
-            />
           </div>
         </div>
         <div class="form-group">
-          <label for="email">
+          <label>
             <i class="fas fa-envelope"></i>
             Email
           </label>
           <div class="input-wrapper">
-            <i class="fas fa-envelope input-icon"></i>
             <input
               type="email"
-              id="email"
-              name="email"
-              [(ngModel)]="formData.email"
-              required
-              #email="ngModel"
-              [class.is-invalid]="email.invalid && email.touched"
-              placeholder="seu@email.com"
+              formControlName="email"
+              placeholder="Votre email"
             />
+            <i class="fas fa-envelope input-icon"></i>
           </div>
         </div>
         <div class="form-group">
-          <label for="message">
-            <i class="fas fa-comment-alt"></i>
-            Mensagem
+          <label>
+            <i class="fas fa-comment"></i>
+            Message
           </label>
           <div class="input-wrapper">
             <textarea
-              id="message"
-              name="message"
-              [(ngModel)]="formData.message"
-              required
-              #message="ngModel"
-              [class.is-invalid]="message.invalid && message.touched"
-              placeholder="Digite sua mensagem aqui..."
+              formControlName="message"
+              placeholder="Votre message"
             ></textarea>
+            <i class="fas fa-comment input-icon"></i>
           </div>
         </div>
         <button
           type="submit"
           class="submit-btn"
-          [disabled]="!contactForm.form.valid"
+          [disabled]="!contactForm.valid"
         >
           <i class="fas fa-paper-plane"></i>
-          Enviar Mensagem
+          Envoyer le Message
         </button>
       </form>
+    </div>
+    <div class="contact-info">
+      <ul class="contact-list">
+        <li>
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Genève, Suisse</span>
+        </li>
+        <li>
+          <i class="fab fa-linkedin"></i>
+          <a href="https://linkedin.com/in/estherdutra" target="_blank"
+            >linkedin.com/in/estherdutra</a
+          >
+        </li>
+        <li>
+          <i class="fab fa-behance"></i>
+          <a href="https://behance.net/estherdutra" target="_blank"
+            >behance.net/estherdutra</a
+          >
+        </li>
+      </ul>
     </div>
   </div>
 </section>

@@ -55,6 +55,37 @@
     color: #7c5a3a;
     line-height: 1.6;
     opacity: 0.9;
+    margin-bottom: 24px;
+  }
+}
+
+.cv-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #a06c47;
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(160, 108, 71, 0.2);
+
+  i {
+    font-size: 1.1em;
+    transition: transform 0.3s ease;
+  }
+
+  &:hover {
+    background: #7c5a3a;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(160, 108, 71, 0.25);
+
+    i {
+      transform: translateY(2px);
+    }
   }
 }
 
@@ -196,6 +227,10 @@
     li {
       justify-content: center;
     }
+  }
+
+  .cv-button {
+    margin: 0 auto;
   }
 
   .social-links {

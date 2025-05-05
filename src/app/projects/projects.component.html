@@ -1,5 +1,5 @@
 <section class="projects-section">
-  <h2>Projetos</h2>
+  <h2>Projets</h2>
   <div class="projects-container">
     <div class="projects-grid">
       <div class="project-card" *ngFor="let project of getVisibleProjects()">
@@ -14,11 +14,9 @@
           <h3 class="project-name">{{ project.name }}</h3>
           <p class="project-role">{{ project.role }}</p>
           <ul class="project-details">
-            <li><strong>Objetivo:</strong> {{ project.objective }}</li>
-            <li>
-              <strong>Ferramentas:</strong> {{ project.tools.join(", ") }}
-            </li>
-            <li><strong>Duração:</strong> {{ project.duration }}</li>
+            <li><strong>Objectif:</strong> {{ project.objective }}</li>
+            <li><strong>Outils:</strong> {{ project.tools.join(", ") }}</li>
+            <li><strong>Durée:</strong> {{ project.duration }}</li>
           </ul>
           <a
             [href]="project.link"
@@ -26,7 +24,7 @@
             target="_blank"
             rel="noopener noreferrer"
           >
-            Ver Projeto <i class="fas fa-arrow-right"></i>
+            Voir le Projet <i class="fas fa-arrow-right"></i>
           </a>
         </div>
       </div>
@@ -46,7 +44,7 @@
           class="dot"
           [class.active]="currentPage === i + 1"
           (click)="goToPage(i + 1)"
-          [attr.aria-label]="'Ir para página ' + (i + 1)"
+          [attr.aria-label]="'Aller à la page ' + (i + 1)"
         ></button>
       </div>
       <button

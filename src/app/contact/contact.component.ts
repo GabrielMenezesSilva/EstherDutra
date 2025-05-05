@@ -1,36 +1,37 @@
-import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { CommonModule } from '@angular/common';
-
-interface FormData {
-  name: string;
-  email: string;
-  message: string;
-}
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.scss'],
 })
-export class ContactComponent {
-  formData: FormData = {
-    name: '',
-    email: '',
-    message: '',
-  };
+export class ContactComponent implements OnInit {
+  contactForm: FormGroup;
 
-  onSubmit() {
-    // Aqui você pode implementar a lógica para enviar o formulário
-    console.log('Form submitted:', this.formData);
+  constructor(private fb: FormBuilder) {
+    this.contactForm = this.fb.group({
+      name: ['', [Validators.required, Validators.minLength(3)]],
+      email: ['', [Validators.required, Validators.email]],
+      message: ['', [Validators.required, Validators.minLength(10)]],
+    });
+  }
 
-    // Limpar o formulário após o envio
-    this.formData = {
-      name: '',
-      email: '',
-      message: '',
-    };
+  ngOnInit(): void {}
+
+  onSubmit(): void {
+    if (this.contactForm.valid) {
+      console.log('Form submitted:', this.contactForm.value);
+      // Aqui você pode adicionar a lógica para enviar o formulário
+      this.contactForm.reset();
+    }
   }
 }
