@@ -1,50 +1,91 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Project } from './project.interface';
-import { PROJECTS } from './projects.data';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-projects',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.scss'],
 })
-export class ProjectsComponent implements OnInit, OnDestroy {
-  projects: Project[] = PROJECTS;
-  currentIndex = 0;
-  private autoPlayInterval: any;
+export class ProjectsComponent implements OnInit {
+  currentPage = 1;
+  itemsPerPage = 2;
+  totalPages = 0;
+  projects = [
+    {
+      name: 'PizzaBot',
+      role: 'Aplicativo mobile de delivery',
+      objective: 'Facilitar o pedido de pizzas através de chatbot',
+      tools: ['Figma', 'Miro'],
+      duration: '2 meses',
+      link: 'https://www.behance.net/gallery/123456789/PizzaBot',
+      image: 'https://picsum.photos/800/600?random=1',
+    },
+    {
+      name: 'Fight Club',
+      role: 'Aplicativo para marcar lutas e treinos',
+      objective: 'Organizar combates e treinamentos',
+      tools: ['Figma'],
+      duration: '1,5 meses',
+      link: 'https://www.behance.net/gallery/123456789/Fight-Club',
+      image: 'https://picsum.photos/800/600?random=2',
+    },
+    {
+      name: "La Gazelle d'Or",
+      role: 'Rebranding completo (site, logo, fotografia)',
+      objective: 'Modernizar a imagem da marca',
+      tools: ['Figma', 'Photoshop'],
+      duration: '3 meses',
+      link: 'https://www.behance.net/gallery/123456789/La-Gazelle-dOr',
+      image: 'https://picsum.photos/800/600?random=3',
+    },
+    {
+      name: 'Praxia Agência Web',
+      role: 'Identidade visual completa',
+      objective: 'Criar uma identidade forte e coerente',
+      tools: ['Figma', 'Illustrator'],
+      duration: '2 meses',
+      link: 'https://www.behance.net/gallery/123456789/Praxia',
+      image: 'https://picsum.photos/800/600?random=4',
+    },
+    {
+      name: 'Reflexólogo',
+      role: 'Rebranding, cartão, logo e site',
+      objective: 'Valorizar a prática e atrair novos clientes',
+      tools: ['Figma', 'Photoshop'],
+      duration: '1 mês',
+      link: 'https://www.behance.net/gallery/123456789/Reflexologo',
+      image: 'https://picsum.photos/800/600?random=5',
+    },
+  ];
 
   ngOnInit() {
-    this.startAutoPlay();
+    this.totalPages = Math.ceil(this.projects.length / this.itemsPerPage);
   }
 
-  ngOnDestroy() {
-    this.stopAutoPlay();
+  getVisibleProjects() {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    return this.projects.slice(startIndex, endIndex);
   }
 
-  nextSlide() {
-    this.currentIndex = (this.currentIndex + 1) % this.projects.length;
+  nextPage() {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+    }
   }
 
-  prevSlide() {
-    this.currentIndex =
-      (this.currentIndex - 1 + this.projects.length) % this.projects.length;
+  prevPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+    }
   }
 
-  goToSlide(index: number) {
-    this.currentIndex = index;
-  }
-
-  private startAutoPlay() {
-    this.autoPlayInterval = setInterval(() => {
-      this.nextSlide();
-    }, 8000);
-  }
-
-  private stopAutoPlay() {
-    if (this.autoPlayInterval) {
-      clearInterval(this.autoPlayInterval);
+  goToPage(page: number) {
+    if (page >= 1 && page <= this.totalPages) {
+      this.currentPage = page;
     }
   }
 }

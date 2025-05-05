@@ -1,76 +1,61 @@
 <section class="projects-section">
   <h2>Projetos</h2>
-
-  <div class="carousel-container">
-    <button
-      class="carousel-button prev"
-      (click)="prevSlide()"
-      aria-label="Projeto anterior"
-    >
-      <span class="arrow">←</span>
-    </button>
-
-    <div class="carousel">
-      <div
-        class="carousel-track"
-        [style.transform]="'translateX(-' + currentIndex * 100 + '%)'"
-      >
-        <div class="carousel-slide" *ngFor="let project of projects">
-          <div class="project-card">
-            <div class="project-images">
-              <img
-                [src]="project.imageUrl"
-                [alt]="project.name"
-                class="project-image"
-              />
-            </div>
-            <div class="project-info">
-              <h3 class="project-name">{{ project.name }}</h3>
-              <p class="project-role">{{ project.role }}</p>
-              <ul class="project-details">
-                <li>
-                  <strong>Objetivo:</strong> {{ project.details.objective }}
-                </li>
-                <li><strong>Função:</strong> {{ project.details.role }}</li>
-                <li>
-                  <strong>Ferramentas:</strong> {{ project.details.tools }}
-                </li>
-                <li>
-                  <strong>Duração:</strong> {{ project.details.duration }}
-                </li>
-              </ul>
-              <a
-                [href]="project.link"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="project-link"
-                style="cursor: pointer"
-              >
-                Ver projeto
-                <i class="fas fa-external-link-alt"></i>
-              </a>
-            </div>
-          </div>
+  <div class="projects-container">
+    <div class="projects-grid">
+      <div class="project-card" *ngFor="let project of getVisibleProjects()">
+        <div class="project-images">
+          <img
+            [src]="project.image"
+            [alt]="project.name"
+            class="project-image"
+          />
+        </div>
+        <div class="project-info">
+          <h3 class="project-name">{{ project.name }}</h3>
+          <p class="project-role">{{ project.role }}</p>
+          <ul class="project-details">
+            <li><strong>Objetivo:</strong> {{ project.objective }}</li>
+            <li>
+              <strong>Ferramentas:</strong> {{ project.tools.join(", ") }}
+            </li>
+            <li><strong>Duração:</strong> {{ project.duration }}</li>
+          </ul>
+          <a
+            [href]="project.link"
+            class="project-link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Ver Projeto <i class="fas fa-arrow-right"></i>
+          </a>
         </div>
       </div>
     </div>
 
-    <button
-      class="carousel-button next"
-      (click)="nextSlide()"
-      aria-label="Próximo projeto"
-    >
-      <span class="arrow">→</span>
-    </button>
-  </div>
-
-  <div class="carousel-dots">
-    <button
-      *ngFor="let project of projects; let i = index"
-      class="dot"
-      [class.active]="i === currentIndex"
-      (click)="goToSlide(i)"
-      [attr.aria-label]="'Ir para slide ' + (i + 1)"
-    ></button>
+    <div class="pagination">
+      <button
+        class="pagination-button"
+        (click)="prevPage()"
+        [disabled]="currentPage === 1"
+      >
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <div class="pagination-dots">
+        <button
+          *ngFor="let page of [].constructor(totalPages); let i = index"
+          class="dot"
+          [class.active]="currentPage === i + 1"
+          (click)="goToPage(i + 1)"
+          [attr.aria-label]="'Ir para página ' + (i + 1)"
+        ></button>
+      </div>
+      <button
+        class="pagination-button"
+        (click)="nextPage()"
+        [disabled]="currentPage === totalPages"
+      >
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
   </div>
 </section>
