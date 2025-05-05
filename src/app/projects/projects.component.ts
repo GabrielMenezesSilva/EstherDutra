@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
@@ -13,6 +13,13 @@ export class ProjectsComponent implements OnInit {
   currentPage = 1;
   itemsPerPage = 2;
   totalPages = 0;
+  isMobile = false;
+
+  @HostListener('window:resize')
+  onResize() {
+    this.checkScreenSize();
+  }
+
   projects = [
     {
       name: 'PizzaBot',
@@ -62,13 +69,22 @@ export class ProjectsComponent implements OnInit {
   ];
 
   ngOnInit() {
+    this.checkScreenSize();
+  }
+
+  checkScreenSize() {
+    this.isMobile = window.innerWidth <= 900;
+    this.itemsPerPage = this.isMobile ? 1 : 2;
+    this.updateTotalPages();
+  }
+
+  updateTotalPages() {
     this.totalPages = Math.ceil(this.projects.length / this.itemsPerPage);
   }
 
   getVisibleProjects() {
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
-    const endIndex = startIndex + this.itemsPerPage;
-    return this.projects.slice(startIndex, endIndex);
+    return this.projects.slice(startIndex, startIndex + this.itemsPerPage);
   }
 
   nextPage() {
