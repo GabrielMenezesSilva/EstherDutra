@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "estherdutra-4c834"
+  },
+  "targets": {
+    "estherdutra-4c834": {
+      "hosting": {
+        "estherdutra": [
+          "estherdutra"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

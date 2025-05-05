@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "estherdutra",
+      "public": "dist/esther-dutra/browser",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}
