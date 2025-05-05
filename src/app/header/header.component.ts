@@ -9,6 +9,8 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
+  isMenuOpen = false;
+
   constructor() {}
 
   scrollToSection(event: Event, sectionId: string) {
@@ -17,5 +19,13 @@ export class HeaderComponent {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
+  }
+
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  closeMenu() {
+    this.isMenuOpen = false;
   }
 }

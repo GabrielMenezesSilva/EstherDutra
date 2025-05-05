@@ -9,12 +9,16 @@
       <span class="logo-sub">Esther</span>
     </div>
 
-    <nav class="nav-menu">
-      <ul>
-        <li><a href="#about">À Propos</a></li>
-        <li><a href="#competences">Compétences</a></li>
-        <li><a href="#projects">Projets</a></li>
-      </ul>
-    </nav>
+    <button class="hamburger" (click)="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class="mobile-menu" [class.show]="isMenuOpen">
+      <a href="#about" (click)="closeMenu()">À Propos</a>
+      <a href="#competences" (click)="closeMenu()">Compétences</a>
+      <a href="#projects" (click)="closeMenu()">Projets</a>
+    </div>
   </div>
 </header>
