@@ -33,10 +33,10 @@ export class ProjectsComponent implements OnInit {
     {
       name: 'Fight Club',
       role: 'Aplicativo para marcar lutas e treinos',
-      objective: 'Organizar combates e treinamentos',
+      objective: 'Organiser des combats et des entraînements',
       tools: ['Figma'],
       duration: '1,5 meses',
-      link: 'https://www.behance.net/gallery/123456789/Fight-Club',
+      link: 'https://frontend-react-app-gmcyo.ondigitalocean.app/auth/login',
       image: 'https://picsum.photos/800/600?random=2',
     },
     {
