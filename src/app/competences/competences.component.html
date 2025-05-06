@@ -5,13 +5,25 @@
   </h2>
   <div class="competences-container">
     <div class="tabs">
-      <button class="tab-button active" (click)="setActiveTab('technical')">
+      <button
+        class="tab-button"
+        [class.active]="activeTab === 'technical'"
+        (click)="setActiveTab('technical')"
+      >
         Techniques
       </button>
-      <button class="tab-button" (click)="setActiveTab('soft')">
+      <button
+        class="tab-button"
+        [class.active]="activeTab === 'soft'"
+        (click)="setActiveTab('soft')"
+      >
         Soft Skills
       </button>
-      <button class="tab-button" (click)="setActiveTab('languages')">
+      <button
+        class="tab-button"
+        [class.active]="activeTab === 'languages'"
+        (click)="setActiveTab('languages')"
+      >
         Langues
       </button>
     </div>
