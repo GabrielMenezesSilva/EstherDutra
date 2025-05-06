@@ -8,21 +8,24 @@
       <button
         class="tab-button"
         [class.active]="activeTab === 'technical'"
-        (click)="setActiveTab('technical')"
+        (mouseenter)="!isMobile && setActiveTab('technical')"
+        (click)="isMobile && setActiveTab('technical')"
       >
         Techniques
       </button>
       <button
         class="tab-button"
         [class.active]="activeTab === 'soft'"
-        (click)="setActiveTab('soft')"
+        (mouseenter)="!isMobile && setActiveTab('soft')"
+        (click)="isMobile && setActiveTab('soft')"
       >
         Soft Skills
       </button>
       <button
         class="tab-button"
         [class.active]="activeTab === 'languages'"
-        (click)="setActiveTab('languages')"
+        (mouseenter)="!isMobile && setActiveTab('languages')"
+        (click)="isMobile && setActiveTab('languages')"
       >
         Langues
       </button>

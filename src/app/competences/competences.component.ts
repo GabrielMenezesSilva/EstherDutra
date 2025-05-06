@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 interface Skill {
@@ -17,8 +17,24 @@ type TabType = 'technical' | 'soft' | 'languages';
   templateUrl: './competences.component.html',
   styleUrls: ['./competences.component.scss'],
 })
-export class CompetencesComponent {
+export class CompetencesComponent implements OnInit, OnDestroy {
   activeTab: TabType = 'technical';
+  private tabTimeout: any;
+  isMobile = false;
+  private mobileBreakpoint = 768; // Breakpoint para dispositivos móveis
+
+  ngOnInit() {
+    this.checkIfMobile();
+    window.addEventListener('resize', this.checkIfMobile.bind(this));
+  }
+
+  ngOnDestroy() {
+    window.removeEventListener('resize', this.checkIfMobile.bind(this));
+  }
+
+  private checkIfMobile() {
+    this.isMobile = window.innerWidth <= this.mobileBreakpoint;
+  }
 
   technicalSkills: Skill[] = [
     {
@@ -112,6 +128,17 @@ export class CompetencesComponent {
   ];
 
   setActiveTab(tab: TabType): void {
-    this.activeTab = tab;
+    // Limpa o timeout anterior se existir
+    if (this.tabTimeout) {
+      clearTimeout(this.tabTimeout);
+    }
+
+    // Define um novo timeout para mudar a aba
+    this.tabTimeout = setTimeout(
+      () => {
+        this.activeTab = tab;
+      },
+      this.isMobile ? 0 : 100
+    ); // Sem delay em mobile, 100ms em desktop
   }
 }
