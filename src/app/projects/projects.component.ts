@@ -29,7 +29,7 @@ export class ProjectsComponent implements OnInit {
       tools: ['Figma', 'Miro'],
       duration: '2 meses',
       link: 'https://www.behance.net/gallery/123456789/PizzaBot',
-      image: 'https://picsum.photos/800/600?random=1',
+      image: 'assets/images/projects/pizzabot.jpg',
     },
     {
       name: 'Fight Club',
@@ -39,7 +39,7 @@ export class ProjectsComponent implements OnInit {
       tools: ['Figma'],
       duration: '1,5 meses',
       link: 'https://frontend-react-app-gmcyo.ondigitalocean.app/auth/login',
-      image: 'https://picsum.photos/800/600?random=2',
+      image: 'assets/images/fightclub.png',
     },
     {
       name: "La Gazelle d'Or",
@@ -49,7 +49,7 @@ export class ProjectsComponent implements OnInit {
       tools: ['Figma', 'Photoshop'],
       duration: '3 meses',
       link: 'https://www.behance.net/gallery/123456789/La-Gazelle-dOr',
-      image: 'https://picsum.photos/800/600?random=3',
+      image: 'assets/images/gazelle.png',
     },
     {
       name: 'Praxia Agência Web',
@@ -59,7 +59,7 @@ export class ProjectsComponent implements OnInit {
       tools: ['Figma', 'Illustrator'],
       duration: '2 meses',
       link: 'https://www.behance.net/gallery/123456789/Praxia',
-      image: 'https://picsum.photos/800/600?random=4',
+      image: 'assets/images/projects/praxia.jpg',
     },
     {
       name: 'Reflexólogo',
@@ -69,7 +69,7 @@ export class ProjectsComponent implements OnInit {
       tools: ['Figma', 'Photoshop'],
       duration: '1 mês',
       link: 'https://www.behance.net/gallery/123456789/Reflexologo',
-      image: 'https://picsum.photos/800/600?random=5',
+      image: 'assets/images/projects/reflexologo.jpg',
     },
   ];
 
