@@ -23,8 +23,9 @@ export class ProjectsComponent implements OnInit {
   projects = [
     {
       name: 'PizzaBot',
-      role: 'Aplicativo mobile de delivery',
-      objective: 'Facilitar o pedido de pizzas através de chatbot',
+      role: 'application mobile conçue pour faciliter la commande de pizzas dans une pizzeria',
+      objective:
+        "Conception de l'interface graphique pour faciliter le fonctionnement de l'application de commande de pizzas via chatbot",
       tools: ['Figma', 'Miro'],
       duration: '2 meses',
       link: 'https://www.behance.net/gallery/123456789/PizzaBot',
@@ -32,8 +33,9 @@ export class ProjectsComponent implements OnInit {
     },
     {
       name: 'Fight Club',
-      role: 'Aplicativo para marcar lutas e treinos',
-      objective: 'Organiser des combats et des entraînements',
+      role: 'Organisation des combats et des entraînements',
+      objective:
+        "Conception de l'interface graphique pour le bon fonctionnement de l'application de combat et d'entraînement",
       tools: ['Figma'],
       duration: '1,5 meses',
       link: 'https://frontend-react-app-gmcyo.ondigitalocean.app/auth/login',
@@ -41,8 +43,9 @@ export class ProjectsComponent implements OnInit {
     },
     {
       name: "La Gazelle d'Or",
-      role: 'Rebranding completo (site, logo, fotografia)',
-      objective: 'Modernizar a imagem da marca',
+      role: 'Refonte complète (site, logo, photographie)',
+      objective:
+        "Conception d'une nouvelle identité visuelle moderne et élégante pour refléter l'excellence de la marque",
       tools: ['Figma', 'Photoshop'],
       duration: '3 meses',
       link: 'https://www.behance.net/gallery/123456789/La-Gazelle-dOr',
@@ -50,8 +53,9 @@ export class ProjectsComponent implements OnInit {
     },
     {
       name: 'Praxia Agência Web',
-      role: 'Identidade visual completa',
-      objective: 'Criar uma identidade forte e coerente',
+      role: 'Identité visuelle complète',
+      objective:
+        "Création d'une identité visuelle forte et cohérente pour positionner l'agence comme référence dans le marché digital",
       tools: ['Figma', 'Illustrator'],
       duration: '2 meses',
       link: 'https://www.behance.net/gallery/123456789/Praxia',
@@ -59,8 +63,9 @@ export class ProjectsComponent implements OnInit {
     },
     {
       name: 'Reflexólogo',
-      role: 'Rebranding, cartão, logo e site',
-      objective: 'Valorizar a prática e atrair novos clientes',
+      role: 'Refonte, carte de visite, logo et site web',
+      objective:
+        "Développement d'une identité visuelle professionnelle pour valoriser la pratique et attirer une nouvelle clientèle",
       tools: ['Figma', 'Photoshop'],
       duration: '1 mês',
       link: 'https://www.behance.net/gallery/123456789/Reflexologo',
