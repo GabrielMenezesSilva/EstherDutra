@@ -129,6 +129,53 @@
   }
 }
 
+.error-message {
+  color: #dc3545;
+  font-size: 0.9rem;
+  margin-top: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  i {
+    font-size: 1rem;
+  }
+}
+
+.form-feedback {
+  margin-top: 16px;
+  text-align: center;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: 500;
+
+  .success-message {
+    color: #28a745;
+    background-color: rgba(40, 167, 69, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    i {
+      font-size: 1.2rem;
+    }
+  }
+
+  .error-message {
+    color: #dc3545;
+    background-color: rgba(220, 53, 69, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    i {
+      font-size: 1.2rem;
+    }
+  }
+}
+
 .submit-btn {
   background: #a06c47;
   color: #fff;
@@ -161,6 +208,20 @@
     background: #d4c4b7;
     cursor: not-allowed;
     transform: none;
+    opacity: 0.8;
+  }
+
+  i.fa-spinner {
+    animation: spin 1s linear infinite;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }
 

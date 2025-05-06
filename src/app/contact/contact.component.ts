@@ -6,6 +6,7 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import emailjs from '@emailjs/browser';
 
 @Component({
   selector: 'app-contact',
@@ -16,22 +17,50 @@ import { CommonModule } from '@angular/common';
 })
 export class ContactComponent implements OnInit {
   contactForm: FormGroup;
+  isSubmitting = false;
+  submitSuccess = false;
+  submitError = false;
 
   constructor(private fb: FormBuilder) {
     this.contactForm = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(3)]],
+      name: ['', [Validators.required, Validators.minLength(2)]],
       email: ['', [Validators.required, Validators.email]],
       message: ['', [Validators.required, Validators.minLength(10)]],
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // Inicializar o EmailJS com sua chave pública
+    emailjs.init('TDTMa4BO1MhM6dqrS');
+  }
 
-  onSubmit(): void {
-    if (this.contactForm.valid) {
-      console.log('Form submitted:', this.contactForm.value);
-      // Aqui você pode adicionar a lógica para enviar o formulário
-      this.contactForm.reset();
+  async onSubmit() {
+    if (this.contactForm.valid && !this.isSubmitting) {
+      this.isSubmitting = true;
+      this.submitSuccess = false;
+      this.submitError = false;
+
+      try {
+        const templateParams = {
+          from_name: this.contactForm.value.name,
+          from_email: this.contactForm.value.email,
+          message: this.contactForm.value.message,
+        };
+
+        await emailjs.send(
+          'estherdutra', // ID do seu serviço no EmailJS
+          'template_ocsmuzb', // ID do seu template no EmailJS
+          templateParams
+        );
+
+        this.submitSuccess = true;
+        this.contactForm.reset();
+      } catch (error) {
+        console.error('Erro ao enviar email:', error);
+        this.submitError = true;
+      } finally {
+        this.isSubmitting = false;
+      }
     }
   }
 }
