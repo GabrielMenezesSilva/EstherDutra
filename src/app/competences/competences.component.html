@@ -32,81 +32,32 @@
     </div>
 
     <div class="tab-content" [class.active]="activeTab === 'technical'">
-      <div class="competence-card">
-        <h3><i class="fas fa-pencil-ruler"></i>Figma</h3>
-        <p>
-          Niveau avancé en conception d'interfaces et prototypage interactif.
-        </p>
-      </div>
-      <div class="competence-card">
-        <h3><i class="fas fa-project-diagram"></i>Miro</h3>
-        <p>Maîtrise de l'idéation et de l'architecture de l'information.</p>
-      </div>
-      <div class="competence-card">
-        <h3><i class="fas fa-camera"></i>Photoshop/Lightroom</h3>
-        <p>Expertise en retouche photo et traitement d'images professionnel.</p>
-      </div>
-      <div class="competence-card">
-        <h3><i class="fas fa-palette"></i>Picsart PRO</h3>
-        <p>Création visuelle et édition d'images avancée.</p>
-      </div>
-      <div class="competence-card">
-        <h3><i class="fas fa-robot"></i>ChatGPT</h3>
-        <p>Exploration et assistance créative pour le design.</p>
-      </div>
-      <div class="competence-card">
-        <h3><i class="fas fa-tools"></i>Adobe Suite</h3>
-        <p>Notions complètes sur les outils de la suite Adobe.</p>
-      </div>
-      <div class="competence-card">
-        <h3><i class="fas fa-cube"></i>Rhinoceros3D</h3>
-        <p>Design produit et modélisation 3D.</p>
-        <span class="skill-note">Mention spéciale</span>
+      <div
+        class="competence-card"
+        *ngFor="let competence of technicalCompetences"
+      >
+        <h3><i [class]="competence.icon"></i>{{ competence.name }}</h3>
+        <p>{{ competence.description }}</p>
+        <span class="skill-note" *ngIf="competence.isSpecial"
+          >Mention spéciale</span
+        >
       </div>
     </div>
 
     <div class="tab-content" [class.active]="activeTab === 'soft'">
-      <div class="competence-card">
-        <h3><i class="fas fa-comments"></i>Communication</h3>
-        <p>
-          Capacité à communiquer efficacement avec les équipes et les clients,
-          en traduisant les besoins en solutions de design.
-        </p>
-      </div>
-      <div class="competence-card">
-        <h3><i class="fas fa-lightbulb"></i>Créativité</h3>
-        <p>
-          Approche innovante pour résoudre les problèmes de design, en proposant
-          des solutions uniques et créatives.
-        </p>
-      </div>
-      <div class="competence-card">
-        <h3><i class="fas fa-users"></i>Travail d'équipe</h3>
-        <p>
-          Collaboration efficace avec les développeurs, les producteurs et
-          autres membres de l'équipe pour atteindre les objectifs du projet.
-        </p>
+      <div class="competence-card" *ngFor="let competence of softCompetences">
+        <h3><i [class]="competence.icon"></i>{{ competence.name }}</h3>
+        <p>{{ competence.description }}</p>
       </div>
     </div>
 
     <div class="tab-content" [class.active]="activeTab === 'languages'">
-      <div class="competence-card">
-        <h3><i class="fas fa-language"></i>Français</h3>
-        <p>Langue maternelle, maîtrise complète à l'oral et à l'écrit.</p>
-      </div>
-      <div class="competence-card">
-        <h3><i class="fas fa-language"></i>Anglais</h3>
-        <p>
-          Niveau avancé, capacité à travailler dans un environnement
-          international.
-        </p>
-      </div>
-      <div class="competence-card">
-        <h3><i class="fas fa-language"></i>Portugais</h3>
-        <p>
-          Niveau intermédiaire, communication fluide dans un contexte
-          professionnel.
-        </p>
+      <div
+        class="competence-card"
+        *ngFor="let competence of languageCompetences"
+      >
+        <h3><i [class]="competence.icon"></i>{{ competence.name }}</h3>
+        <p>{{ competence.description }}</p>
       </div>
     </div>
   </div>

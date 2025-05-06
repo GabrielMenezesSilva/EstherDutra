@@ -1,11 +1,11 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-interface Skill {
+interface Competence {
   name: string;
   icon: string;
-  level: number;
   description: string;
+  isSpecial?: boolean;
 }
 
 type TabType = 'technical' | 'soft' | 'languages';
@@ -17,11 +17,95 @@ type TabType = 'technical' | 'soft' | 'languages';
   templateUrl: './competences.component.html',
   styleUrls: ['./competences.component.scss'],
 })
-export class CompetencesComponent implements OnInit, OnDestroy {
+export class CompetencesComponent implements OnInit {
   activeTab: TabType = 'technical';
   private tabTimeout: any;
   isMobile = false;
-  private mobileBreakpoint = 768; // Breakpoint para dispositivos móveis
+  private mobileBreakpoint = 768;
+
+  technicalCompetences: Competence[] = [
+    {
+      name: 'Figma',
+      icon: 'fas fa-pencil-ruler',
+      description:
+        "Niveau avancé en conception d'interfaces et prototypage interactif.",
+    },
+    {
+      name: 'Miro',
+      icon: 'fas fa-project-diagram',
+      description:
+        "Maîtrise de l'idéation et de l'architecture de l'information.",
+    },
+    {
+      name: 'Photoshop/Lightroom',
+      icon: 'fas fa-camera',
+      description:
+        "Expertise en retouche photo et traitement d'images professionnel.",
+    },
+    {
+      name: 'Picsart PRO',
+      icon: 'fas fa-palette',
+      description: "Création visuelle et édition d'images avancée.",
+    },
+    {
+      name: 'ChatGPT',
+      icon: 'fas fa-robot',
+      description: 'Exploration et assistance créative pour le design.',
+    },
+    {
+      name: 'Adobe Suite',
+      icon: 'fas fa-tools',
+      description: 'Notions complètes sur les outils de la suite Adobe.',
+    },
+    {
+      name: 'Rhinoceros3D',
+      icon: 'fas fa-cube',
+      description: 'Design produit et modélisation 3D.',
+      isSpecial: true,
+    },
+  ];
+
+  softCompetences: Competence[] = [
+    {
+      name: 'Communication',
+      icon: 'fas fa-comments',
+      description:
+        'Capacité à communiquer efficacement avec les équipes et les clients, en traduisant les besoins en solutions de design.',
+    },
+    {
+      name: 'Créativité',
+      icon: 'fas fa-lightbulb',
+      description:
+        'Approche innovante pour résoudre les problèmes de design, en proposant des solutions uniques et créatives.',
+    },
+    {
+      name: "Travail d'équipe",
+      icon: 'fas fa-users',
+      description:
+        "Collaboration efficace avec les développeurs, les producteurs et autres membres de l'équipe pour atteindre les objectifs du projet.",
+    },
+  ];
+
+  languageCompetences: Competence[] = [
+    {
+      name: 'Français',
+      icon: 'fas fa-language',
+      description:
+        'Niveau courant, communication fluide dans un contexte professionnel.',
+    },
+    {
+      name: 'Anglais',
+      icon: 'fas fa-language',
+      description:
+        'Niveau professionnel, capacité à travailler dans un environnement international.',
+    },
+    {
+      name: 'Portugais',
+      icon: 'fas fa-language',
+      description:
+        "Langue maternelle, maîtrise complète à l'oral et à l'écrit.",
+    },
+  ];
 
   ngOnInit() {
     this.checkIfMobile();
@@ -36,109 +120,16 @@ export class CompetencesComponent implements OnInit, OnDestroy {
     this.isMobile = window.innerWidth <= this.mobileBreakpoint;
   }
 
-  technicalSkills: Skill[] = [
-    {
-      name: 'Figma',
-      icon: 'fa-brands fa-figma',
-      level: 90,
-      description:
-        "Design d'interfaces, prototypage et collaboration en temps réel",
-    },
-    {
-      name: 'Miro',
-      icon: 'fa-solid fa-chart-network',
-      level: 85,
-      description:
-        'Cartographie de processus, brainstorming et ateliers virtuels',
-    },
-    {
-      name: 'Adobe Suite',
-      icon: 'fa-brands fa-adobe',
-      level: 80,
-      description:
-        'Photoshop, Illustrator et InDesign pour le design graphique',
-    },
-    {
-      name: 'Microsoft Office',
-      icon: 'fa-brands fa-microsoft',
-      level: 95,
-      description:
-        'Excel, PowerPoint et Word pour la documentation et les présentations',
-    },
-    {
-      name: 'Trello',
-      icon: 'fa-brands fa-trello',
-      level: 90,
-      description: 'Gestion de projets et organisation des tâches',
-    },
-    {
-      name: 'Google Workspace',
-      icon: 'fa-brands fa-google',
-      level: 95,
-      description: 'Outils de productivité et de collaboration',
-    },
-  ];
-
-  softSkills: Skill[] = [
-    {
-      name: 'Communication',
-      icon: 'fa-solid fa-comments',
-      level: 95,
-      description: 'Communication claire et efficace dans différents contextes',
-    },
-    {
-      name: 'Créativité',
-      icon: 'fa-solid fa-lightbulb',
-      level: 90,
-      description: 'Pensée créative et innovante pour des solutions',
-    },
-    {
-      name: "Travail d'équipe",
-      icon: 'fa-solid fa-people-group',
-      level: 95,
-      description: 'Collaboration efficace et leadership participatif',
-    },
-    {
-      name: 'Gestion du temps',
-      icon: 'fa-solid fa-clock',
-      level: 90,
-      description: 'Organisation et priorisation des tâches',
-    },
-  ];
-
-  languages: Skill[] = [
-    {
-      name: 'Portugais',
-      icon: 'fa-solid fa-language',
-      level: 100,
-      description: 'Langue maternelle',
-    },
-    {
-      name: 'Anglais',
-      icon: 'fa-solid fa-language',
-      level: 85,
-      description: 'Courant',
-    },
-    {
-      name: 'Français',
-      icon: 'fa-solid fa-language',
-      level: 70,
-      description: 'Intermédiaire',
-    },
-  ];
-
   setActiveTab(tab: TabType): void {
-    // Limpa o timeout anterior se existir
     if (this.tabTimeout) {
       clearTimeout(this.tabTimeout);
     }
 
-    // Define um novo timeout para mudar a aba
     this.tabTimeout = setTimeout(
       () => {
         this.activeTab = tab;
       },
       this.isMobile ? 0 : 100
-    ); // Sem delay em mobile, 100ms em desktop
+    );
   }
 }
